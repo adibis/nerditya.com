@@ -1,0 +1,39 @@
+<svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style>
+<marker id="arrow05a" viewBox="0 0 10 10" refX="9" refY="9" markerWidth="7" markerHeight="7" orient="auto">
+  <path d="M0,10 L5,0 L10,10 z" fill="#0369a1"/>
+</marker>
+</defs>
+
+<text x="400" y="26" text-anchor="middle" font-size="18" font-weight="500" fill="#0f172a" color="#0f172a">strength decays continuously; reinforcement resets it</text>
+
+<line x1="60" y1="260" x2="740" y2="260" stroke="#64748b" stroke-width="1.5"/>
+<line x1="60" y1="60" x2="60" y2="260" stroke="#64748b" stroke-width="1.5"/>
+<text x="400" y="292" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">time since last reinforcement</text>
+<text x="30" y="160" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b" transform="rotate(-90 30 160)">strength</text>
+
+<!-- threshold line -->
+<line x1="60" y1="220" x2="740" y2="220" stroke="#b45309" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="738" y="224" text-anchor="end" font-size="12" fill="#b45309" color="#b45309">threshold</text>
+
+<!-- decay curve, segments with reinforcement jumps -->
+<polyline points="60,60 90,90 120,120 150,145 180,160 210,172 250,180" fill="none" stroke="#0369a1" stroke-width="2.5"/>
+<line x1="250" y1="180" x2="250" y2="60" stroke="#0369a1" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow05a)"/>
+<polyline points="250,60 290,105 330,140 370,165 410,182 440,192 470,200" fill="none" stroke="#0369a1" stroke-width="2.5"/>
+<line x1="470" y1="200" x2="470" y2="60" stroke="#0369a1" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow05a)"/>
+<polyline points="470,60 510,110 550,150 590,178 630,198 670,212 710,224 740,232" fill="none" stroke="#0369a1" stroke-width="2.5"/>
+
+<circle cx="250" cy="60" r="4" fill="#0369a1"/>
+<circle cx="470" cy="60" r="4" fill="#0369a1"/>
+
+<text x="250" y="44" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">reinforced</text>
+<text x="470" y="44" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">reinforced</text>
+
+<text x="738" y="240" text-anchor="end" font-size="12" fill="#b45309" color="#b45309">crosses threshold</text>
+<text x="738" y="254" text-anchor="end" font-size="12" fill="#b45309" color="#b45309">unreinforced — excluded</text>
+<text x="738" y="268" text-anchor="end" font-size="12" fill="#b45309" color="#b45309">from default retrieval</text>
+
+<text x="400" y="312" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">computed at read time from stored values alone —</text>
+<text x="400" y="329" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">no batch job ever walks the corpus to make this happen</text>
+</svg>

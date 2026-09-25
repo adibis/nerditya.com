@@ -1,0 +1,55 @@
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style>
+<marker id="arrow04a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#0369a1"/>
+</marker>
+<marker id="arrow04b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#df8e1d"/>
+</marker>
+</defs>
+
+<text x="450" y="26" text-anchor="middle" font-size="18" font-weight="500" fill="#0f172a" color="#0f172a">two writer shapes: a wide gap to hide in, and none at all</text>
+
+<text x="20" y="60" font-size="14" font-weight="500" fill="#0f172a" color="#0f172a">agent write</text>
+
+<rect x="20" y="70" width="140" height="60" rx="6" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="90" y="105" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">read state</text>
+
+<line x1="160" y1="100" x2="196" y2="100" stroke="#0369a1" stroke-width="1.5" marker-end="url(#arrow04a)"/>
+
+<rect x="200" y="70" width="140" height="60" rx="6" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="270" y="98" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">LLM call(s)</text>
+<text x="270" y="114" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">await, await...</text>
+
+<line x1="340" y1="100" x2="376" y2="100" stroke="#0369a1" stroke-width="1.5" marker-end="url(#arrow04a)"/>
+
+<rect x="380" y="70" width="140" height="60" rx="6" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="450" y="105" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">decide</text>
+
+<line x1="520" y1="100" x2="556" y2="100" stroke="#df8e1d" stroke-width="1.5" marker-end="url(#arrow04b)"/>
+
+<rect x="560" y="70" width="140" height="60" rx="6" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/>
+<text x="630" y="105" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">write</text>
+
+<!-- gap bracket -->
+<path d="M 160 145 L 160 155 L 700 155 L 700 145" fill="none" stroke="#b45309" stroke-width="1.5"/>
+<text x="430" y="174" text-anchor="middle" font-size="13" fill="#b45309" color="#b45309">wide gap — another writer can invalidate assumptions here</text>
+<text x="430" y="191" text-anchor="middle" font-size="13" fill="#b45309" color="#b45309">(Mem0's TOCTOU race lives in exactly this span)</text>
+
+<line x1="20" y1="216" x2="880" y2="216" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,3"/>
+
+<text x="20" y="246" font-size="14" font-weight="500" fill="#0f172a" color="#0f172a">regression write</text>
+
+<rect x="20" y="256" width="200" height="60" rx="6" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="120" y="282" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">test finishes</text>
+<text x="120" y="300" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">outcome fully known</text>
+
+<line x1="220" y1="286" x2="256" y2="286" stroke="#0369a1" stroke-width="1.5" marker-end="url(#arrow04a)"/>
+
+<rect x="260" y="256" width="200" height="60" rx="6" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="360" y="282" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">append fact</text>
+<text x="360" y="300" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">single write() call</text>
+
+<text x="620" y="291" text-anchor="middle" font-size="13" fill="#0369a1" color="#0369a1">no gap — nothing to race, no lock needed</text>
+</svg>

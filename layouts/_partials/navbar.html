@@ -1,0 +1,99 @@
+{{- /* Site-level override of the Hextra theme's navbar: splits the single
+  row into two -- row 1 (logo, centered search, top-level category links,
+  utility icons) and row 2 -- both inside one sticky container.
+
+  Row 2 is hierarchical, not a flat hand-maintained list: it shows the
+  current top-level section's own child sections (its series) as tabs,
+  computed from content structure via .FirstSection.Pages, not from
+  hugo.yaml. A top-level section opts in by setting `tabbar: true` in its
+  own front matter (see content/software/_index.md, content/hardware/_index.md);
+  Blog and About don't set it, so they get no row 2. This is what makes
+  "Software" and "Hardware" show different series without any menu config
+  per series -- adding a new series under content/software/ just shows up. */ -}}
+
+{{- $page := . -}}
+{{- $iconHeight := 24 -}}
+{{- $currentPage := . -}}
+{{- $rightItems := .Site.Menus.main -}}
+
+<div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  {{- /* Row 1: logo | search (true center via grid) | utility links -- grid,
+    not flex space-between, so the search box stays centered regardless of
+    how wide the left/right clusters end up being. */ -}}
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:grid hx:items-center hx:h-16 hx:px-6" style="grid-template-columns: 1fr auto 1fr;">
+    <div class="hx:flex hx:items-center">
+      {{ partial "navbar-title.html" . }}
+    </div>
+
+    <div class="hx:flex hx:justify-center">
+      {{- range .Site.Menus.main -}}
+        {{- if eq .Params.type "search" -}}
+          {{- partial "search.html" (dict "params" .Params "location" "navbar") -}}
+        {{- end -}}
+      {{- end -}}
+    </div>
+
+    <div class="hx:flex hx:items-center hx:justify-end hx:gap-1">
+      {{- range $rightItems -}}
+        {{- if eq .Params.type "search" -}}
+          {{- /* already rendered in the center column */ -}}
+        {{- else -}}
+          {{- $link := .URL -}}
+          {{- $external := strings.HasPrefix $link "http" -}}
+          {{- with .PageRef -}}
+            {{- if hasPrefix . "/" -}}
+              {{- $link = relLangURL (strings.TrimPrefix "/" .) -}}
+            {{- end -}}
+          {{- end -}}
+
+          {{- if eq .Params.type "theme-toggle" -}}
+            {{- partial "theme-toggle.html" (dict "iconHeight" $iconHeight "hideLabel" (not .Params.label) "iconHeight" $iconHeight "location" "top" "class" "hx:p-2") -}}
+          {{- else if eq .Params.type "language-switch" -}}
+            {{- partial "language-switch" (dict "context" $page "grow" false "hideLabel" (not .Params.label) "iconName" (.Params.icon | default "translate") "iconHeight" $iconHeight "location" "top" "class" "hx:p-2") -}}
+          {{- else if .Params.icon -}}
+            {{- $rel := cond (eq .Params.icon "mastodon") "noreferrer me" "noreferrer" }}
+            <a class="hx:p-2 hx:text-current" {{ if $external }}target="_blank" rel="{{ $rel }}"{{ end }} href="{{ $link }}" title="{{ or (T .Identifier) .Name | safeHTML }}">
+              {{- partial "utils/icon.html" (dict "name" .Params.icon "attributes" (printf "height=%d" $iconHeight)) -}}
+              <span class="hx:sr-only">{{ or (T .Identifier) .Name | safeHTML }}</span>
+            </a>
+          {{- else -}}
+            {{- partial "navbar-link.html" (dict "currentPage" $currentPage "link" $link "external" $external "item" .) -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
+      <button type="button" aria-label="{{ (T "menu") | default "Menu" }}" aria-expanded="false" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden hx:hextra-focus-visible-inset">
+        {{- partial "utils/icon.html" (dict "name" "hamburger-menu" "attributes" (printf "height=%d" $iconHeight)) -}}
+      </button>
+    </div>
+  </nav>
+
+  {{- /* Row 2: the current top-level section's own child sections (its
+    series), only when that section opted in via `tabbar: true` and
+    actually has at least one child section to show. */ -}}
+  {{- $seriesTabs := slice -}}
+  {{- with .FirstSection -}}
+    {{- if .Params.tabbar -}}
+      {{- range .Pages -}}
+        {{- if .IsSection -}}
+          {{- $seriesTabs = $seriesTabs | append . -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $seriesTabs = sort $seriesTabs "Weight" -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if gt (len $seriesTabs) 0 -}}
+  <nav class="site-tab-row hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:gap-1 hx:px-6 hx:border-t hx:border-gray-200 hx:dark:border-neutral-800">
+    {{- range $seriesTabs -}}
+      {{- $active := strings.HasPrefix $currentPage.RelPermalink .RelPermalink -}}
+      <a href="{{ .RelPermalink }}" class="site-tab-link hx:text-sm hx:py-2.5 hx:px-3 hx:-mb-px hx:border-b-2 {{ if $active }}site-tab-active hx:border-current hx:font-medium{{ else }}hx:border-transparent hx:text-gray-600 hx:hover:text-gray-800 hx:dark:text-gray-400 hx:dark:hover:text-gray-200{{ end }}">
+        {{- .Title -}}
+      </a>
+    {{- end -}}
+  </nav>
+  {{- end -}}
+</div>

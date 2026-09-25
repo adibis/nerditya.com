@@ -1,0 +1,33 @@
+<svg viewBox="0 0 800 310" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style>
+<marker id="arrow07a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#0369a1"/>
+</marker>
+</defs>
+
+<text x="400" y="26" text-anchor="middle" font-size="18" font-weight="500" fill="#0f172a" color="#0f172a">multi-model routing: the same text record, unchanged, to any model</text>
+
+<rect x="300" y="50" width="200" height="60" rx="8" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="400" y="76" text-anchor="middle" font-size="14" fill="#0f172a" color="#0f172a">structured text record</text>
+<text x="400" y="94" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">one format, no branching</text>
+
+<line x1="360" y1="110" x2="180" y2="180" stroke="#0369a1" stroke-width="1.5" marker-end="url(#arrow07a)"/>
+<line x1="400" y1="110" x2="400" y2="180" stroke="#0369a1" stroke-width="1.5" marker-end="url(#arrow07a)"/>
+<line x1="440" y1="110" x2="620" y2="180" stroke="#0369a1" stroke-width="1.5" marker-end="url(#arrow07a)"/>
+
+<rect x="70" y="184" width="220" height="60" rx="8" fill="#ffffff" stroke="#0369a1" stroke-width="1"/>
+<text x="180" y="210" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">frontier model</text>
+<text x="180" y="228" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">open-ended judgment</text>
+
+<rect x="290" y="184" width="220" height="60" rx="8" fill="#ffffff" stroke="#0369a1" stroke-width="1"/>
+<text x="400" y="210" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">small local model</text>
+<text x="400" y="228" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">bounded classification</text>
+
+<rect x="510" y="184" width="220" height="60" rx="8" fill="#ffffff" stroke="#0369a1" stroke-width="1"/>
+<text x="620" y="210" text-anchor="middle" font-size="13" fill="#0f172a" color="#0f172a">no model at all</text>
+<text x="620" y="228" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">plain fact, no ambiguity</text>
+
+<text x="400" y="272" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">the routing decision lives entirely above the memory layer —</text>
+<text x="400" y="289" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">text is model-agnostic by construction</text>
+</svg>

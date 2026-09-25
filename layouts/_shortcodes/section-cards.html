@@ -1,0 +1,26 @@
+{{- /*
+  Auto-generated card grid for a section's child pages, sorted by weight.
+  Unlike hand-authored {{< cards >}} blocks, this only ever lists pages
+  Hugo actually built - draft and future-dated (publishDate) pages are
+  excluded automatically, so a section index never links to a page that
+  isn't live yet.
+
+  @example {{< section-cards >}}
+*/ -}}
+
+{{- $pages := .Page.CurrentSection.Pages.ByWeight -}}
+{{- $cols := .Get "cols" | default 3 -}}
+
+{{- $cardContent := "" -}}
+{{- range $pages -}}
+  {{- if ne .File.Filename $.Page.CurrentSection.File.Filename -}}
+    {{- $cardContent = printf "%s%s" $cardContent (partial "shortcodes/card" (dict
+      "page" .
+      "link" .RelPermalink
+      "title" .Title
+      "subtitle" .Description
+    )) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- partial "shortcodes/cards" (dict "cols" $cols "content" ($cardContent | safeHTML)) -}}

@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style></defs>
+
+<text x="400" y="26" text-anchor="middle" font-size="17" font-weight="500" fill="#0f172a" color="#0f172a">reinforcement alone can trap a new entry in a hole it never escapes</text>
+
+<!-- left panel: no counter-mechanism -->
+<rect x="20" y="50" width="350" height="240" rx="8" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/>
+<text x="195" y="72" text-anchor="middle" font-size="14" font-weight="500" fill="#0f172a" color="#0f172a">reinforcement alone</text>
+
+<line x1="55" y1="260" x2="345" y2="260" stroke="#64748b" stroke-width="1"/>
+<line x1="55" y1="90" x2="55" y2="260" stroke="#64748b" stroke-width="1"/>
+
+<polyline points="55,240 115,200 175,150 235,110 295,80 345,65" fill="none" stroke="#0369a1" stroke-width="2.5"/>
+<text x="365" y="60" text-anchor="end" font-size="11" fill="#0369a1" color="#0369a1">early winner</text>
+
+<polyline points="55,250 115,248 175,247 235,246 295,245 345,244" fill="none" stroke="#b45309" stroke-width="2.5"/>
+<text x="365" y="238" text-anchor="end" font-size="11" fill="#b45309" color="#b45309">genuinely useful,</text>
+<text x="365" y="252" text-anchor="end" font-size="11" fill="#b45309" color="#b45309">never surfaced</text>
+
+<text x="195" y="278" text-anchor="middle" font-size="12" fill="#64748b" color="#64748b">time since creation</text>
+
+<!-- right panel: with grace-period floor -->
+<rect x="430" y="50" width="350" height="240" rx="8" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="605" y="72" text-anchor="middle" font-size="14" font-weight="500" fill="#0f172a" color="#0f172a">with a grace-period floor</text>
+
+<line x1="465" y1="260" x2="755" y2="260" stroke="#64748b" stroke-width="1"/>
+<line x1="465" y1="90" x2="465" y2="260" stroke="#64748b" stroke-width="1"/>
+
+<polyline points="465,240 525,200 585,150 645,110 705,80 755,65" fill="none" stroke="#0369a1" stroke-width="2.5"/>
+
+<rect x="465" y="170" width="60" height="4" fill="#0369a1" opacity="0.25"/>
+<polyline points="465,180 525,178 585,160 645,130 705,100 755,80" fill="none" stroke="#0369a1" stroke-width="2.5"/>
+<text x="497" y="196" text-anchor="middle" font-size="10" fill="#0369a1" color="#0369a1">grace</text>
+<text x="497" y="208" text-anchor="middle" font-size="10" fill="#0369a1" color="#0369a1">floor</text>
+<text x="775" y="72" text-anchor="end" font-size="11" fill="#0369a1" color="#0369a1">gets a fair look,</text>
+<text x="775" y="88" text-anchor="end" font-size="11" fill="#0369a1" color="#0369a1">earns its own strength</text>
+
+<text x="605" y="278" text-anchor="middle" font-size="12" fill="#64748b" color="#64748b">time since creation</text>
+
+<text x="400" y="312" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">same risk every popularity-ranked system runs into — the fix is a</text>
+<text x="400" y="329" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">deliberate floor, not an assumption that reinforcement converges on its own</text>
+</svg>
