@@ -1,0 +1,9 @@
+public/
+resources/
+.hugo_build.lock
+node_modules/
+.DS_Store
+*.swp
+.claude/
+__pycache__/
+*.pyc
