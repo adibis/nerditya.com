@@ -1,0 +1,27 @@
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style></defs>
+
+<text x="400" y="26" text-anchor="middle" font-size="17" font-weight="500" fill="#0f172a" color="#0f172a">how far real telemetry actually reaches, checked directly</text>
+
+<rect x="100" y="60" width="600" height="80" rx="8" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="400" y="88" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a" color="#0f172a">1. retrieval-time reranking</text>
+<text x="400" y="106" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">real, multi-vendor: Mem0's Memory Decay (20-timestamp</text>
+<text x="400" y="122" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">window), Zep's episode_mentions — both non-destructive</text>
+
+<line x1="400" y1="140" x2="400" y2="158" stroke="#94a3b8" stroke-width="1.5"/>
+
+<rect x="125" y="160" width="550" height="80" rx="8" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/>
+<text x="400" y="188" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a" color="#0f172a">2. consolidation triggers</text>
+<text x="400" y="206" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">real, but universally time/event-based — Letta's step-count,</text>
+<text x="400" y="222" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">LangMem's aspirational "strength" language, never usage-weighted</text>
+
+
+
+<line x1="400" y1="240" x2="400" y2="258" stroke="#94a3b8" stroke-width="1.5"/>
+
+<rect x="150" y="260" width="500" height="80" rx="8" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="400" y="288" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a" color="#0f172a">3. model retraining</text>
+<text x="400" y="306" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">real and common — DeepSeek-R1, Cursor, RLHF all do this</text>
+<text x="400" y="322" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">never yet combined with shared multi-writer memory</text>
+</svg>

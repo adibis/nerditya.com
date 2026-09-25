@@ -1,0 +1,73 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style></defs>
+
+<text x="450" y="26" text-anchor="middle" font-size="20" font-weight="500" fill="#0f172a" color="#0f172a">the reference architecture, five dimensions across three tiers</text>
+
+<!-- headers -->
+<text x="90" y="58" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b" color="#64748b"> </text>
+<rect x="170" y="44" width="220" height="30" rx="4" fill="#f0f9ff" stroke="#0369a1" stroke-width="1"/>
+<text x="280" y="64" text-anchor="middle" font-size="13" font-weight="500" fill="#0369a1" color="#0369a1">tier 1: one user</text>
+<rect x="400" y="44" width="220" height="30" rx="4" fill="#f0f9ff" stroke="#0369a1" stroke-width="1"/>
+<text x="510" y="64" text-anchor="middle" font-size="13" font-weight="500" fill="#0369a1" color="#0369a1">tier 2: small team</text>
+<rect x="630" y="44" width="220" height="30" rx="4" fill="#fffbeb" stroke="#df8e1d" stroke-width="1"/>
+<text x="740" y="64" text-anchor="middle" font-size="13" font-weight="500" fill="#b45309" color="#b45309">tier 3: production</text>
+
+<!-- row: Storage -->
+<text x="10" y="98" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">storage</text>
+<rect x="170" y="82" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="280" y="110" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">flat files + git</text>
+<rect x="400" y="82" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="510" y="110" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">Postgres, MVCC</text>
+<rect x="630" y="82" width="220" height="46" rx="4" fill="#fffbeb" stroke="#df8e1d" stroke-width="1"/>
+<text x="740" y="102" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">sharded —</text>
+<text x="740" y="116" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">no single instance</text>
+
+<!-- row: Concurrency -->
+<text x="10" y="156" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">concurrency</text>
+<rect x="170" y="140" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="280" y="168" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">mkdir lock, per-file</text>
+<rect x="400" y="140" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="510" y="168" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">DB transactions</text>
+<rect x="630" y="140" width="220" height="46" rx="4" fill="#fffbeb" stroke="#df8e1d" stroke-width="1"/>
+<text x="740" y="160" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">same, replicated +</text>
+<text x="740" y="174" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">watched</text>
+
+<!-- row: Writers -->
+<text x="10" y="214" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">writers</text>
+<rect x="170" y="198" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="280" y="226" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">mostly agents</text>
+<rect x="400" y="198" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="510" y="220" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">agent / regression /</text>
+<text x="510" y="234" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">telemetry / human</text>
+<rect x="630" y="198" width="220" height="46" rx="4" fill="#fffbeb" stroke="#df8e1d" stroke-width="1"/>
+<text x="740" y="220" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">same, agents are</text>
+<text x="740" y="234" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">the minority by volume</text>
+
+<!-- row: Invalidation -->
+<text x="10" y="272" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">invalidation</text>
+<rect x="170" y="256" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="280" y="278" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">counter + human-</text>
+<text x="280" y="292" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">reviewed sweep</text>
+<rect x="400" y="256" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="510" y="284" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">real evaporation</text>
+<rect x="630" y="256" width="220" height="46" rx="4" fill="#fffbeb" stroke="#df8e1d" stroke-width="1"/>
+<text x="740" y="284" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">evaporation, load-bearing</text>
+
+<!-- row: Telemetry -->
+<text x="10" y="330" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">telemetry</text>
+<rect x="170" y="314" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="280" y="342" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">retrieval counter only</text>
+<rect x="400" y="314" width="220" height="46" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+<text x="510" y="336" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">usage-weighted</text>
+<text x="510" y="350" text-anchor="middle" font-size="12" fill="#0f172a" color="#0f172a">consolidation</text>
+<rect x="630" y="314" width="220" height="46" rx="4" fill="#fef3c7" stroke="#df8e1d" stroke-width="2"/>
+<text x="740" y="336" text-anchor="middle" font-size="11" font-weight="500" fill="#b45309" color="#b45309">proposed retraining loop</text>
+<text x="740" y="350" text-anchor="middle" font-size="11" fill="#b45309" color="#b45309">— genuinely speculative</text>
+
+<line x1="10" y1="378" x2="890" y2="378" stroke="#cbd5e1" stroke-width="1"/>
+<text x="450" y="398" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">model routing needs no row of its own — it lives entirely</text>
+<text x="450" y="415" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">above this table, unaffected by any tier</text>
+<text x="450" y="440" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">confidence decreases left to right: well-established primitive →</text>
+<text x="450" y="457" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">borrowed, real precedent → honestly proposed</text>
+</svg>

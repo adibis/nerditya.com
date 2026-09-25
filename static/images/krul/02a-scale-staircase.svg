@@ -1,0 +1,53 @@
+<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style>
+<marker id="arrow02a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#0369a1"/>
+</marker>
+</defs>
+
+<text x="450" y="26" text-anchor="middle" font-size="20" font-weight="500" fill="#0f172a" color="#0f172a">the scale ladder: four tiers, four different bottlenecks</text>
+
+<!-- staircase, rising left to right -->
+<rect x="30" y="230" width="180" height="70" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="120" y="252" text-anchor="middle" font-size="16" font-weight="500" fill="#0f172a" color="#0f172a">tier 0</text>
+<text x="120" y="270" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">1 writer</text>
+<text x="120" y="286" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">no problem to solve</text>
+
+<rect x="240" y="180" width="180" height="120" rx="8" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="330" y="202" text-anchor="middle" font-size="16" font-weight="500" fill="#0f172a" color="#0f172a">tier 1</text>
+<text x="330" y="220" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">1 user, N agents</text>
+<text x="330" y="236" text-anchor="middle" font-size="11" fill="#0369a1" color="#0369a1">bottleneck: narrow</text>
+<text x="330" y="250" text-anchor="middle" font-size="11" fill="#0369a1" color="#0369a1">read-modify-write</text>
+<text x="330" y="270" text-anchor="middle" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">fix: mkdir lock</text>
+<text x="330" y="286" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">25 writers, 0 lost</text>
+
+<rect x="450" y="120" width="180" height="180" rx="8" fill="#f0f9ff" stroke="#0369a1" stroke-width="1.5"/>
+<text x="540" y="142" text-anchor="middle" font-size="16" font-weight="500" fill="#0f172a" color="#0f172a">tier 2</text>
+<text x="540" y="160" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">small team, tens–</text>
+<text x="540" y="174" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">low hundreds of writers</text>
+<text x="540" y="194" text-anchor="middle" font-size="11" fill="#0369a1" color="#0369a1">bottleneck: collisions</text>
+<text x="540" y="208" text-anchor="middle" font-size="11" fill="#0369a1" color="#0369a1">stop being rare</text>
+<text x="540" y="228" text-anchor="middle" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">fix: transactional</text>
+<text x="540" y="244" text-anchor="middle" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">database (MVCC)</text>
+<text x="540" y="264" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">borrowed, not invented</text>
+
+<rect x="660" y="40" width="210" height="260" rx="8" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/>
+<text x="765" y="62" text-anchor="middle" font-size="16" font-weight="500" fill="#0f172a" color="#0f172a">tier 3</text>
+<text x="765" y="80" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">production, hundreds</text>
+<text x="765" y="94" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">of thousands of writers</text>
+<text x="765" y="116" text-anchor="middle" font-size="11" fill="#b45309" color="#b45309">bottleneck: a single</text>
+<text x="765" y="130" text-anchor="middle" font-size="11" fill="#b45309" color="#b45309">instance's own ceiling</text>
+<text x="765" y="150" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">(100 eng × 100 agents</text>
+<text x="765" y="164" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">+ CI/nightly, six figs)</text>
+<text x="765" y="186" text-anchor="middle" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">fix: sharding /</text>
+<text x="765" y="202" text-anchor="middle" font-size="13" font-weight="500" fill="#0f172a" color="#0f172a">federation</text>
+<text x="765" y="222" text-anchor="middle" font-size="11" fill="#b45309" color="#b45309">honestly speculative:</text>
+<text x="765" y="236" text-anchor="middle" font-size="11" fill="#b45309" color="#b45309">telemetry → retraining</text>
+
+<line x1="210" y1="265" x2="238" y2="240" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow02a)"/>
+<line x1="420" y1="240" x2="448" y2="210" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow02a)"/>
+<line x1="630" y1="180" x2="658" y2="140" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow02a)"/>
+
+<text x="450" y="326" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">a mkdir lock is correct at tier 1 and actively wrong advice at tier 3 — the tier tells you which</text>
+</svg>

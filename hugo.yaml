@@ -1,0 +1,75 @@
+baseURL: https://nerditya.com/
+locale: en-us
+title: Nerditya
+theme: hextra
+
+enableRobotsTXT: true
+enableGitInfo: false
+
+params:
+  description: "Systems and hardware for nerds: AI-agent infrastructure, mechanical CAD and design for maker builds, and whatever else doesn't have a more specific home."
+  images:
+    - "images/og-card.png"
+
+  author:
+    name: Aditya Shevade
+
+  navbar:
+    displayTitle: true
+    displayLogo: false
+    width: wide
+
+  page:
+    width: wide
+
+  theme:
+    default: light
+    displayToggle: true
+
+  footer:
+    displayCopyright: false
+    displayPoweredBy: false
+
+  imageZoom:
+    enable: true
+
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+menu:
+  main:
+    - name: Hardware
+      pageRef: /hardware
+      weight: 1
+    - name: Software
+      pageRef: /software
+      weight: 2
+    - name: Blog
+      pageRef: /blog
+      weight: 3
+    - name: About
+      pageRef: /about
+      weight: 4
+    - name: search
+      weight: 5
+      params:
+        type: search
+    - name: theme-toggle
+      weight: 6
+      params:
+        type: theme-toggle
+    - name: RSS
+      url: /index.xml
+      weight: 7
+      params:
+        icon: rss
+
+markup:
+  highlight:
+    noClasses: false
+    style: monokai
+    lineNos: true
+    lineNumbersInTable: false
+  goldmark:
+    renderer:
+      unsafe: true

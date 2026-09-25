@@ -1,0 +1,74 @@
+<svg viewBox="0 0 820 430" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style></defs>
+
+<text x="410" y="26" text-anchor="middle" font-size="20" font-weight="500" fill="#0f172a" color="#0f172a">seven real systems, four criteria: no row clears three</text>
+
+<text x="90" y="58" text-anchor="middle" font-size="13" font-weight="500" fill="#64748b" color="#64748b">system</text>
+<text x="240" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#64748b" color="#64748b">(a) concurrent</text>
+<text x="240" y="66" text-anchor="middle" font-size="11" fill="#94a3b8" color="#94a3b8">multi-agent KB</text>
+<text x="390" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#64748b" color="#64748b">(b) telemetry</text>
+<text x="390" y="66" text-anchor="middle" font-size="11" fill="#94a3b8" color="#94a3b8">to retraining</text>
+<text x="540" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#64748b" color="#64748b">(c) multi-modal</text>
+<text x="540" y="66" text-anchor="middle" font-size="11" fill="#94a3b8" color="#94a3b8">memory</text>
+<text x="690" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#64748b" color="#64748b">(d) model-aware</text>
+<text x="690" y="66" text-anchor="middle" font-size="11" fill="#94a3b8" color="#94a3b8">routing</text>
+
+<line x1="10" y1="78" x2="810" y2="78" stroke="#cbd5e1" stroke-width="1"/>
+
+<!-- helper legend -->
+<!-- Yes = filled blue circle + check, Partial = amber half, No = light gray dash -->
+
+<!-- row 1: AWS S3 Vectors -->
+<text x="15" y="106" font-size="14" fill="#0f172a" color="#0f172a">AWS S3 Vectors</text>
+<circle cx="240" cy="100" r="11" fill="#0369a1"/><text x="240" y="105" text-anchor="middle" font-size="13" fill="#ffffff" color="#ffffff">✓</text>
+<text x="390" y="105" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="540" y="105" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="690" y="105" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+
+<!-- row 2: MemClaw -->
+<text x="15" y="148" font-size="14" fill="#0f172a" color="#0f172a">MemClaw</text>
+<circle cx="240" cy="142" r="11" fill="#0369a1"/><text x="240" y="147" text-anchor="middle" font-size="13" fill="#ffffff" color="#ffffff">✓</text>
+<text x="390" y="147" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="540" y="147" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="690" y="147" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+
+<!-- row 3: Neo4j -->
+<text x="15" y="190" font-size="14" fill="#0f172a" color="#0f172a">Neo4j ("share a brain")</text>
+<circle cx="240" cy="184" r="11" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/><text x="240" y="189" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">~</text>
+<text x="390" y="189" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">counter-bet</text>
+<text x="540" y="189" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="690" y="189" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+
+<!-- row 4: Uber -->
+<text x="15" y="232" font-size="14" fill="#0f172a" color="#0f172a">Uber AI factory</text>
+<circle cx="240" cy="226" r="11" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/><text x="240" y="231" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">~</text>
+<text x="390" y="231" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">to humans</text>
+<text x="540" y="231" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<circle cx="690" cy="226" r="11" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/><text x="690" y="231" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">~</text>
+
+<!-- row 5: CoreWeave -->
+<text x="15" y="274" font-size="14" fill="#0f172a" color="#0f172a">CoreWeave production RL</text>
+<text x="240" y="273" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<circle cx="390" cy="268" r="11" fill="#0369a1"/><text x="390" y="273" text-anchor="middle" font-size="13" fill="#ffffff" color="#ffffff">✓</text>
+<text x="540" y="273" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="690" y="273" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+
+<!-- row 6: AMRO-S -->
+<text x="15" y="316" font-size="14" fill="#0f172a" color="#0f172a">AMRO-S (ACO routing)</text>
+<circle cx="240" cy="310" r="11" fill="#fffbeb" stroke="#df8e1d" stroke-width="1.5"/><text x="240" y="315" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">~</text>
+<text x="390" y="315" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="540" y="315" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<circle cx="690" cy="310" r="11" fill="#0369a1"/><text x="690" y="315" text-anchor="middle" font-size="13" fill="#ffffff" color="#ffffff">✓</text>
+
+<!-- row 7: MemVerse -->
+<text x="15" y="358" font-size="14" fill="#0f172a" color="#0f172a">MemVerse (benchmark)</text>
+<text x="240" y="357" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<circle cx="390" cy="352" r="11" fill="#0369a1"/><text x="390" y="357" text-anchor="middle" font-size="13" fill="#ffffff" color="#ffffff">✓</text>
+<text x="540" y="357" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+<text x="690" y="357" text-anchor="middle" font-size="16" fill="#cbd5e1" color="#cbd5e1">–</text>
+
+<line x1="10" y1="374" x2="810" y2="374" stroke="#cbd5e1" stroke-width="1"/>
+<text x="410" y="394" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">filled = real, confirmed · half = partial or contested · dash = absent</text>
+<text x="410" y="412" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">highest score anywhere, out of four: two</text>
+</svg>

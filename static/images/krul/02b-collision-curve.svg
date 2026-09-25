@@ -1,0 +1,38 @@
+<svg viewBox="0 0 800 375" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace"><defs><style>
+text { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; stroke: currentColor; stroke-width: 0.35px; paint-order: stroke fill; }
+</style></defs>
+
+<text x="400" y="26" text-anchor="middle" font-size="18" font-weight="500" fill="#0f172a" color="#0f172a">pairwise collision opportunities grow quadratically</text>
+
+<!-- region shading -->
+<rect x="60" y="50" width="163" height="230" fill="#f0f9ff"/>
+<rect x="223" y="50" width="517" height="230" fill="#fffbeb"/>
+<line x1="223" y1="50" x2="223" y2="280" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,3"/>
+
+<!-- axes -->
+<line x1="60" y1="280" x2="740" y2="280" stroke="#64748b" stroke-width="1.5"/>
+<line x1="60" y1="60" x2="60" y2="280" stroke="#64748b" stroke-width="1.5"/>
+<text x="400" y="312" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">concurrent writers</text>
+<text x="30" y="170" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b" transform="rotate(-90 30 170)">pairwise opportunities</text>
+
+<!-- the curve -->
+<polyline points="87,280 114,279 142,278 196,273 250,265 332,247 386,232 468,203 550,168 604,141 658,111 740,60"
+  fill="none" stroke="#0369a1" stroke-width="2.5"/>
+
+<circle cx="196" cy="273" r="4" fill="#0369a1"/>
+<circle cx="604" cy="141" r="4" fill="#df8e1d"/>
+
+<text x="150" y="70" text-anchor="middle" font-size="13" font-weight="500" fill="#0369a1" color="#0369a1">tier 1</text>
+<text x="150" y="86" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">single digits</text>
+<text x="150" y="100" text-anchor="middle" font-size="12" fill="#0369a1" color="#0369a1">a lock is cheap</text>
+
+<text x="480" y="70" text-anchor="middle" font-size="13" font-weight="500" fill="#b45309" color="#b45309">tier 2</text>
+<text x="480" y="86" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">twenty engineers' worth of agents ≈ 400×</text>
+<text x="480" y="100" text-anchor="middle" font-size="12" fill="#b45309" color="#b45309">the pairwise opportunities of one, not 20×</text>
+
+<text x="196" y="298" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">5</text>
+<text x="604" y="298" text-anchor="middle" font-size="11" fill="#64748b" color="#64748b">20</text>
+
+<text x="400" y="332" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">same shape as the birthday paradox — a room of 23 has</text>
+<text x="400" y="349" text-anchor="middle" font-size="13" fill="#64748b" color="#64748b">better-than-even odds of a shared birthday</text>
+</svg>
