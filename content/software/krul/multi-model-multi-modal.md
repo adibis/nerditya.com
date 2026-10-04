@@ -6,7 +6,7 @@ publishDate: 2026-09-21
 draft: false
 description: "Multi-model routing turns out to need almost no changes to a shared memory layer: the research is unambiguous about why. Multi-modal memory is the opposite: genuinely unsolved in production, and five independent vendors have converged on the same lossy workaround, which is itself the strongest evidence the gap is real."
 prev: /software/krul/telemetry-closes-the-loop
-next: /software/krul/reference-architecture
+next: /software/krul/gates-in-hooks-out
 ---
 
 Two of the four criteria from this series' opening article remain: multi-model routing and multi-modal memory. They get one article together because the research on each turns out to be lopsided in a useful way — one of them is close to a non-issue for the kind of text-first memory layer this series has been designing across the previous six articles, and the other is a real, hard, unsolved problem that deserves to be named as exactly that rather than glossed over with a diagram of a "multi-modal embedding layer" that doesn't correspond to anything working anywhere.

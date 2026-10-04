@@ -41,6 +41,36 @@ At the top of that ladder is the actual target: a shared knowledge base that hun
 
 **Multi-model and multi-modal** turn out to be lopsided in a useful way. Routing across models needs almost no change to the memory layer at all — text is the one format every model reads identically, so the routing decision lives entirely above the store. Multi-modal memory is the opposite: unsolved industry-wide, with five independent, non-cooperating vendors all converging on the identical lossy workaround (caption an image, discard the original) — itself the strongest evidence the gap is real, not an artifact of one search missing something.
 
-## Published
+## Why this is hard, and at what scale
 
-{{< section-cards >}}
+{{< cards cols="3" >}}
+  {{< card link="/software/krul/the-search-for-a-counterexample/" title="The Search for a Counterexample" subtitle="Does any real system combine concurrent multi-agent shared memory, telemetry-driven retraining, multi-modal memory, and memory-aware model routing? An adversarial search across roughly thirty primary sources, checked directly against their own source, not their marketing." >}}
+  {{< card link="/software/krul/scale-ladder/" title="The Scale Ladder: One Agent to One Hundred Thousand" subtitle="Concurrent multi-agent memory isn't one problem, it's several, and they don't share a solution. A four-tier ladder from a single writer to production scale, and what actually changes at each rung." >}}
+{{< /cards >}}
+
+## Who writes, and whether they can write safely at once
+
+{{< cards cols="3" >}}
+  {{< card link="/software/krul/concurrency-models/" title="Concurrency Models for Shared Agent Memory" subtitle="Four production and near-production AI memory systems, checked directly against their own source and issue trackers for what actually happens when two writers hit the same scope at once. None of them reach for a CRDT." >}}
+  {{< card link="/software/krul/writers-beyond-agents/" title="Writers Beyond Agents: Regression, Telemetry, and Bucketing as First-Class Citizens" subtitle="Every production AI-memory system surveyed assumes a writer is an LLM making a decision. A regression suite reporting a new failure signature is a writer too, and it changes the concurrency and schema story." >}}
+{{< /cards >}}
+
+## What a shared memory stops trusting, and what it learns from
+
+{{< cards cols="3" >}}
+  {{< card link="/software/krul/pheromone-invalidation/" title="Invalidation Without a Cron Job: Pheromone Evaporation" subtitle="Deciding what a shared knowledge base should stop trusting, automatically, at a scale where no human reviews entries one at a time. Ant-colony pheromone evaporation, applied as invalidation for shared AI-agent memory." >}}
+  {{< card link="/software/krul/telemetry-closes-the-loop/" title="Telemetry That Actually Closes the Loop" subtitle="Telemetry-to-retraining is standard practice elsewhere. What's never been built is that loop combined with a shared, multi-writer memory system — an architecture gap, not a technology gap." >}}
+  {{< card link="/software/krul/multi-model-multi-modal/" title="Multi-Model and Multi-Modal: Where the Memory Layer Has to Change, and Where It Doesn't" subtitle="Multi-model routing needs almost no changes to a shared memory layer. Multi-modal memory is the opposite: genuinely unsolved in production, with five vendors converged on the same lossy workaround." >}}
+{{< /cards >}}
+
+## How the orchestrator actually reaches memory
+
+{{< cards cols="1" >}}
+  {{< card link="/software/krul/gates-in-hooks-out/" title="Gates In, Hooks Out: How the Orchestrator Actually Touches Memory" subtitle="Being a daemon instead of an agent session is this series' whole premise for the orchestrator. Nothing about that comes with built-in safety, or a way to write back into memory. Both had to be built." >}}
+{{< /cards >}}
+
+## Putting it together
+
+{{< cards cols="1" >}}
+  {{< card link="/software/krul/reference-architecture/" title="A Reference Architecture at Three Scales" subtitle="Everything from the previous eight articles, assembled into one architecture described concretely at each tier of the scale ladder: well-established at the smallest, borrowed-but-real in the middle, honestly speculative at the largest." >}}
+{{< /cards >}}
