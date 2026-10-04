@@ -126,4 +126,6 @@ Claude's part was narrower and came last: once the gate, the hooks, and the desi
 
 ## Coming soon: wiring a gear's lifecycle into krul's own memory
 
+The gate and the two completion hooks aren't just a fix for one repo's workflow — they're real additions to krul itself, and [the krul series covers them on their own terms](/software/krul/gates-in-hooks-out), past the one gear that happened to need them first.
+
 The real reason I wanted a broader hook survey in the first place: [krul's own memory layer](/software/krul/pheromone-invalidation) — the knowledge graph this series has already covered, pheromone-style invalidation and reinforcement included — is exactly where a gear's output belongs. `on_gear_stage_complete` and `on_gear_complete` are the missing link: the lifecycle points a write, an invalidation, or a reinforcement signal should fire from. Nothing wires a gear's output into that graph yet. Once there's a real, tested handler doing it, that's its own article.
