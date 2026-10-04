@@ -1,14 +1,14 @@
 ---
 title: "A Reference Architecture at Three Scales"
-weight: 8
+weight: 9
 date: 2026-09-21
 publishDate: 2026-09-21
 draft: false
-description: "Everything from the previous seven articles, assembled into one architecture described concretely at each tier of the scale ladder: a well-established primitive at the smallest scale, borrowed-but-real at the middle one, and honestly speculative at the largest."
-prev: /software/krul/multi-model-multi-modal
+description: "Everything from the previous eight articles, assembled into one architecture described concretely at each tier of the scale ladder: a well-established primitive at the smallest scale, borrowed-but-real at the middle one, and honestly speculative at the largest."
+prev: /software/krul/gates-in-hooks-out
 ---
 
-Seven articles is enough separate pieces that it's worth resisting the temptation to let them stay separate essays. This one assembles them, deliberately organized by the scale ladder from the second article, because the single biggest risk in a series like this is producing something that reads coherently chapter to chapter but never actually specifies a system a reader could build. Three tiers, each concrete, each honest about how much of it rests on an established primitive versus a genuine proposal.
+Eight articles is enough separate pieces that it's worth resisting the temptation to let them stay separate essays. This one assembles them, deliberately organized by the scale ladder from the second article, because the single biggest risk in a series like this is producing something that reads coherently chapter to chapter but never actually specifies a system a reader could build. Three tiers, each concrete, each honest about how much of it rests on an established primitive versus a genuine proposal.
 
 ![Five dimensions across three tiers: storage, concurrency, writers, invalidation, and telemetry, with confidence decreasing left to right from a well-established primitive through a borrowed real precedent to an honestly proposed design](/images/krul/08-reference-architecture.svg)
 
@@ -21,6 +21,8 @@ This tier is the least speculative of the three, not because this series has per
 **Concurrency:** narrow, targeted locks around the specific operations that read-modify-write shared state, built from `mkdir` rather than any external dependency: atomic on POSIX filesystems, no `flock` requirement, no database. Per-file locking, not a single global choke point, so unrelated writes never contend with each other. A stale-lock timeout that reclaims a lock a crashed process left held, rather than wedging the system indefinitely.
 
 **Writers:** predominantly agents at this scale, with the pure-append writes (a tool-call ledger, a simple event log) needing no lock at all: small, [`O_APPEND` writes are atomic](https://man7.org/linux/man-pages/man2/open.2.html) on a local, POSIX-conformant filesystem, a distinction worth keeping even at this small scale because it's free, and worth re-checking rather than assuming the moment the store isn't a local disk anymore.
+
+**Dispatch:** an orchestrator at this scale still needs the same two pieces it will need at every tier above it — a check before a dispatched command runs, and a signal once it's done — but both are nearly free here: a script named in a config file is no heavier than the lock this tier already reaches for, and the person running it is also the person who decided what it's allowed to do. The mechanism doesn't get simpler at the next tier. What changes is whether skipping it is still safe.
 
 **Invalidation:** a single incrementing counter per entry, bumped on genuine recall, checked against age by an occasional human-reviewed sweep. Not evaporation yet: at this scale, with a corpus small enough for good filenames to beat any ranking algorithm, a full decay-curve implementation would be solving a problem this tier doesn't have.
 
@@ -37,6 +39,8 @@ This tier hasn't been built end-to-end in this series. Every piece of it, though
 **Concurrency:** the specific lesson from surveying four production systems, held onto deliberately: a correct database layer doesn't guarantee a correct system above it. LangGraph's own scheduler race, sitting above a correct Postgres layer, is the concrete warning: every point where application code touches shared state outside the database's own transaction boundary is a candidate for exactly the class of lost-update bug tier 1's naive read-modify-write invites, just with higher stakes because more is now depending on it.
 
 **Writers:** a first-class writer-type field (agent, regression, telemetry, human), each carrying its own provenance shape, with the write path branching accordingly. Pure-append fact reports (a regression result, a telemetry event) skip the heavier agent-decision pipeline entirely, both because they don't need it and because forcing them through it would import concurrency risk they never had.
+
+**Dispatch:** a small team's agents aren't all run by whoever wrote the gear dispatching them, which is exactly what turns the interception point from a convenience into a requirement: a policy script, external to the orchestrator's own code, checked before every dispatched command, denying by default on anything it doesn't explicitly allow. The signal on the other side of that command, once it's done, is where a gear's own output would become a tracked write carrying this tier's writer-type field — agent, regression, telemetry, human — instead of something a person copies in afterward. The signal fires; nothing consumes it yet, at this tier or any other.
 
 **Invalidation:** real evaporation: a strength value per entry, reinforced on genuine use, decaying continuously as a function of elapsed time rather than requiring a periodic batch sweep to do anything. Decay rate varies by writer type, since a regression result going quiet means something different than an agent-written fact going quiet. A deliberate counter-mechanism against reinforcement-loop entrenchment, so new entries get a real chance rather than starting in a hole popularity-ranked systems are prone to digging for anything unproven.
 
@@ -55,6 +59,8 @@ This is the tier the series set out to reach, and it's the one where honesty abo
 **Concurrency:** the same transactional discipline as tier 2, replicated across shards, with the same warning about application-layer gaps above the database: now at a scale where an undetected race has far more surface area to hide in before it produces a bug report someone notices.
 
 **Writers:** the full range from the writers-beyond-agents article, at real production volume: regression suites, telemetry pipelines, and human corrections outnumbering agent writes by orders of magnitude, exactly as that article predicted once every automated system in an organization counts as a writer rather than just the ones running a language model.
+
+**Dispatch:** the same gate as tier 2, now load-bearing instead of optional, for the same reason evaporation is load-bearing two rows down: a hundred engineers' orchestrators dispatching commands means a hundred chances for one gear to be wrong, and a default-deny gate is the only version of this that doesn't mean reading every gear by hand before it runs. The unbuilt consumer on the signal side matters more here, not less — at this volume, a gear's findings that never become tracked writes are exactly the kind of loss a tier 1 operator would have caught just by reading the output.
 
 **Invalidation:** evaporation as designed for tier 2, now load-bearing rather than optional. At this scale, a human-reviewed staleness sweep was never going to keep pace, and the entire point of a decay function computed at read time rather than by a batch process is that it costs nothing extra as the corpus grows, because it was never a separate pass over the data in the first place.
 
