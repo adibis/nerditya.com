@@ -6,6 +6,10 @@ theme: hextra
 enableRobotsTXT: true
 enableGitInfo: false
 
+services:
+  googleAnalytics:
+    id: G-4LN0LJYL85
+
 params:
   description: "Systems and hardware for nerds: AI-agent infrastructure, mechanical CAD and design for maker builds, and whatever else doesn't have a more specific home."
   images:
